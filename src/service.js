@@ -38,47 +38,67 @@
 //     ]
 //   }
 
-
 class RickAndMortyService {
-    // el constructor debe inicializar una variable con la url de acceso base al API
+  // el constructor debe inicializar una variable con la url de acceso base al API
 
-	constructor() {}
+  constructor(miurl) {
+    this.miurl = miurl;
+  }
 
+  // este método deberá llamar al servicio y obtener los personajes
+  // deberá devolver un objeto de la siguiente manera
+
+  // {
+  //     "name": "Rick Sanchez",
+  //     "status": "Alive",
+  //     "species": "Human",
+  //     "firstSeen": "Earth",
+  //     "location": "Earth",
+  //     "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+  //     "student": "aqui va el nombre del estudiante",
+  //     "code": "aqui va el codigo del estudiante"
+  // }
+
+  // deberá realizar el respectivo manejo de error en caso de errores al llamar el API
+  // se recomienda usar el api fetch para obtener los datos como en el siguiente ejemplo
+
+  // ejemplo con promesas
+
+  // fetch('miurl')
+  //  .then((respuesta) => respuesta.json())
+  //  .then((mispersonajes) => {
+  //     //aqui dentro mi logica
+  //  })
+
+  //  ejemplo con async/await
+
+  //  const response = await fetch('miurl');
+  //  const mispersonajes = await response.json();
+
+  // valor (1 punto)
+  async getAllCharacters() {
+    // aqui va tu llamado al API usando fetch puedes usar promesas o asycn/await
     
-    // este método deberá llamar al servicio y obtener los personajes
-    // deberá devolver un objeto de la siguiente manera
+    const response = await fetch(this.miurl);
 
-    // {
-    //     "name": "Rick Sanchez",
-    //     "status": "Alive",
-    //     "species": "Human",
-    //     "firstSeen": "Earth",
-    //     "location": "Earth",
-    //     "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-    //     "student": "aqui va el nombre del estudiante",
-    //     "code": "aqui va el codigo del estudiante"
-    // }
+    const data = await response.json();
 
-    // deberá realizar el respectivo manejo de error en caso de errores al llamar el API
-    // se recomienda usar el api fetch para obtener los datos como en el siguiente ejemplo  
+    const mispersonajes = data.results.map((personaje) => ({
+      name: personaje.name,
+      status: personaje.status,
+      species: personaje.species,
+      firstSeen: personaje.origin.name,
+      location: personaje.location.name,
+      image: personaje.image,
+      student: "Agustin Beltran Casas",
+      code: "0000201162",
+    }));
 
-    // ejemplo con promesas
+    return mispersonajes;
 
-    // fetch('miurl')
-    //  .then((respuesta) => respuesta.json())
-    //  .then((mispersonajes) => {
-    //     //aqui dentro mi logica
-    //  })
-
-    //  ejemplo con async/await
-
-    //  const response = await fetch('miurl');
-    //  const mispersonajes = await response.json();
-
-    // valor (1 punto)
-	getAllCharacters() {
-        // aqui va tu llamado al API usando fetch puedes usar promesas o asycn/await
-	}
+    //console.log(personajes);
+    //return personajes;
+  }
 }
 
 export default RickAndMortyService;

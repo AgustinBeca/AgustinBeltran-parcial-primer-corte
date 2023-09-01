@@ -1,0 +1,81 @@
+:root {
+  --character-list-color: #272b33;
+  --character-color: #3b3e43;
+  --primary-font-color: #f5f5f5;
+  --secondary-font-color: #67686b;
+  --alive: #54cb44;
+  --unknown: #9e9e9e;
+  --dead: #d63d2e;
+  --font: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+@media (width <= 500px) {
+  .character-list {
+    flex-flow: column wrap;
+    font-size: smaller;
+    display: flex;
+  }
+}
+
+.character-list {
+  background-color: var(--character-list-color);
+  flex-flow: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  display: flex;
+}
+
+.card {
+  background-color: var(--character-color);
+  border-radius: 10px;
+  flex-grow: 1;
+  max-width: 500px;
+  margin: 20px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.card img {
+  object-fit: cover;
+  flex: 1;
+  width: 100%;
+  height: 300px;
+}
+
+.card-content {
+  flex: 1;
+  padding: 15px;
+}
+
+.name {
+  color: var(--primary-font-color);
+  cursor: pointer;
+  font: var(--font);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--secondary-font-color);
+  font: var(--font);
+}
+
+.status {
+  display: flex;
+}
+
+.information {
+  color: var(--primary-font-color);
+  font: var(--font);
+  margin-bottom: 10px;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  right: 0;
+}
+
+/*# sourceMappingURL=index.61d3354a.css.map */
